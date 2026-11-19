@@ -1,0 +1,68 @@
+<a class="skip-link" href="#main">{{ 'nav.skipToContent' | t }}</a>
+
+<header class="header" [class.header--scrolled]="scrolled()">
+  <div class="container header__bar">
+    <a class="brand" [routerLink]="['/', i18n.lang()]" (click)="closeMenu()">
+      <app-logo />
+      <span class="brand__text">
+        <span class="brand__name">{{ 'meta.siteName' | t }}</span>
+        <span class="brand__tagline">{{ 'meta.tagline' | t }}</span>
+      </span>
+    </a>
+
+    <!-- Always in the header bar, never inside the menu. On desktop it moves to the far right (CSS order). -->
+    <a class="btn btn--primary header-donate" [routerLink]="['/', i18n.lang(), 'donate']" (click)="closeMenu()">
+      <app-icon name="heart" />
+      {{ 'nav.donate' | t }}
+    </a>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="main-nav"
+      [attr.aria-label]="(menuOpen() ? 'nav.close' : 'nav.menu') | t"
+      (click)="toggleMenu()"
+    >
+      <app-icon [name]="menuOpen() ? 'close' : 'menu'" />
+    </button>
+
+    <nav id="main-nav" class="nav" [class.nav--open]="menuOpen()" [attr.aria-label]="'nav.menu' | t">
+      <ul class="nav__list">
+        @for (item of navItems; track item.path) {
+          <li>
+            <a
+              class="nav__link"
+              [routerLink]="item.path ? ['/', i18n.lang(), item.path] : ['/', i18n.lang()]"
+              routerLinkActive="nav__link--active"
+              [routerLinkActiveOptions]="{ exact: item.exact }"
+              ariaCurrentWhenActive="page"
+              (click)="closeMenu()"
+            >
+              {{ item.key | t }}
+            </a>
+          </li>
+        }
+      </ul>
+
+      <ul class="lang-switch" [attr.aria-label]="'nav.language' | t">
+        @for (lang of languages; track lang) {
+          <li>
+            <a
+              class="lang-switch__link"
+              [class.lang-switch__link--active]="lang === i18n.lang()"
+              [routerLink]="linkFor(lang)"
+              [attr.hreflang]="lang"
+              [attr.lang]="lang"
+              [attr.title]="labels[lang].name"
+              [attr.aria-current]="lang === i18n.lang() ? 'true' : null"
+              (click)="selectLanguage(lang)"
+            >
+              {{ labels[lang].short }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

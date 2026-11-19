@@ -1,0 +1,103 @@
+<section class="section container">
+  <header class="section__header">
+    <h1>{{ 'donate.title' | t }}</h1>
+    <p class="lead">{{ 'donate.intro' | t }}</p>
+  </header>
+
+  <p class="notice" role="note">{{ 'donate.placeholderNotice' | t }}</p>
+
+  <div class="methods">
+    @for (method of methods(); track method) {
+      @switch (method) {
+        @case ('eur') {
+          <article class="card card__body method method--wide">
+            <h2 class="method__title"><span class="currency">€</span>{{ 'donate.eurTitle' | t }}</h2>
+            <p>{{ 'donate.eurText' | t }}</p>
+            <div class="method__eur">
+              <dl class="details">
+                <div><dt>{{ 'donate.recipient' | t }}</dt><dd>{{ payments.eur.recipient }}</dd></div>
+                <div>
+                  <dt>{{ 'donate.iban' | t }}</dt>
+                  <dd class="copyable">
+                    <span class="mono">{{ payments.eur.iban }}</span>
+                    <button type="button" class="btn btn--small" (click)="copy('iban', payments.eur.iban)">
+                      {{ (copiedField() === 'iban' ? 'donate.copied' : 'donate.copy') | t }}
+                    </button>
+                  </dd>
+                </div>
+                <div><dt>{{ 'donate.bic' | t }}</dt><dd class="mono">{{ payments.eur.bic }}</dd></div>
+                <div><dt>{{ 'donate.bank' | t }}</dt><dd>{{ payments.eur.bankName }}</dd></div>
+                <div><dt>{{ 'donate.reference' | t }}</dt><dd>{{ 'donate.referenceValue' | t }}</dd></div>
+              </dl>
+              <figure class="qr">
+                <app-qr-code [data]="giroCode()" label="GiroCode" />
+                <figcaption>
+                  <strong>{{ 'donate.qrTitle' | t }}</strong>
+                  <span>{{ 'donate.qrText' | t }}</span>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+        }
+        @case ('paypal') {
+          <article class="card card__body method">
+            <h2 class="method__title"><app-icon name="heart" />{{ 'donate.paypalTitle' | t }}</h2>
+            <p>{{ 'donate.paypalText' | t }}</p>
+            <a class="btn btn--paypal" [href]="payments.paypalUrl" target="_blank" rel="noopener noreferrer">
+              {{ 'donate.paypalButton' | t }}
+            </a>
+          </article>
+        }
+        @case ('rsd') {
+          <article class="card card__body method">
+            <h2 class="method__title"><span class="currency">дин</span>{{ 'donate.rsdTitle' | t }}</h2>
+            <p>{{ 'donate.rsdText' | t }}</p>
+            <dl class="details">
+              <div><dt>{{ 'donate.recipient' | t }}</dt><dd>{{ payments.rsd.recipient }}</dd></div>
+              <div>
+                <dt>{{ 'donate.accountNumber' | t }}</dt>
+                <dd class="copyable">
+                  <span class="mono">{{ payments.rsd.accountNumber }}</span>
+                  <button type="button" class="btn btn--small" (click)="copy('rsd', payments.rsd.accountNumber)">
+                    {{ (copiedField() === 'rsd' ? 'donate.copied' : 'donate.copy') | t }}
+                  </button>
+                </dd>
+              </div>
+              <div><dt>{{ 'donate.bank' | t }}</dt><dd>{{ payments.rsd.bankName }}</dd></div>
+              <div><dt>{{ 'donate.reference' | t }}</dt><dd>{{ 'donate.referenceValue' | t }}</dd></div>
+            </dl>
+          </article>
+        }
+      }
+    }
+  </div>
+</section>
+
+<section class="container">
+  <h2>{{ 'donate.otherWaysTitle' | t }}</h2>
+  <ul class="ways">
+    <li class="way">
+      <app-icon name="box" />
+      <div>
+        <h3>{{ 'donate.inKindTitle' | t }}</h3>
+        <p>{{ 'donate.inKindText' | t }}</p>
+      </div>
+    </li>
+    <li class="way">
+      <app-icon name="hands" />
+      <div>
+        <h3>{{ 'donate.volunteerTitle' | t }}</h3>
+        <p>{{ 'donate.volunteerText' | t }}</p>
+      </div>
+    </li>
+    <li class="way">
+      <app-icon name="share" />
+      <div>
+        <h3>{{ 'donate.shareTitle' | t }}</h3>
+        <p>{{ 'donate.shareText' | t }}</p>
+        <app-social-links />
+      </div>
+    </li>
+  </ul>
+  <a class="btn btn--primary" [routerLink]="['/', i18n.lang(), 'contact']">{{ 'donate.contactCta' | t }}</a>
+</section>

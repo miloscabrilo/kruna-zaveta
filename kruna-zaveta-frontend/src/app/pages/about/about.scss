@@ -1,0 +1,63 @@
+.about__pillars {
+  display: grid;
+  gap: 1rem;
+
+  h2 {
+    margin-top: 0;
+    color: var(--color-primary);
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.values {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.value h3 {
+  margin: 0.75rem 0 0.35rem;
+}
+
+.value p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.value__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--color-gold-soft);
+  color: var(--color-primary);
+  --icon-size: 1.5rem;
+}
+
+.team {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.team__member {
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.team__role {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}

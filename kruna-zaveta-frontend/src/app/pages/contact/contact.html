@@ -1,0 +1,86 @@
+<section class="section container">
+  <header class="section__header">
+    <h1>{{ 'contact.title' | t }}</h1>
+    <p class="lead">{{ 'contact.intro' | t }}</p>
+  </header>
+
+  <div class="contact__layout">
+    <form class="card card__body form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <div class="field">
+        <label for="name">{{ 'contact.name' | t }} *</label>
+        <input id="name" type="text" formControlName="name" autocomplete="name"
+               [attr.maxlength]="limits.name" [attr.aria-invalid]="!!errorKey('name')"
+               [attr.aria-describedby]="errorKey('name') ? 'name-error' : null" />
+        @if (errorKey('name'); as key) {
+          <p id="name-error" class="field__error">{{ key | t }}</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="email">{{ 'contact.email' | t }} *</label>
+        <input id="email" type="email" formControlName="email" autocomplete="email" inputmode="email"
+               [attr.maxlength]="limits.email" [attr.aria-invalid]="!!errorKey('email')"
+               [attr.aria-describedby]="errorKey('email') ? 'email-error' : null" />
+        @if (errorKey('email'); as key) {
+          <p id="email-error" class="field__error">{{ key | t }}</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="subject">{{ 'contact.subject' | t }}</label>
+        <input id="subject" type="text" formControlName="subject" [attr.maxlength]="limits.subject" />
+      </div>
+
+      <div class="field">
+        <label for="message">{{ 'contact.message' | t }} *</label>
+        <textarea id="message" rows="6" formControlName="message"
+                  [attr.maxlength]="limits.message" [attr.aria-invalid]="!!errorKey('message')"
+                  [attr.aria-describedby]="errorKey('message') ? 'message-error' : null"></textarea>
+        @if (errorKey('message'); as key) {
+          <p id="message-error" class="field__error">{{ key | t }}</p>
+        }
+      </div>
+
+      <!-- Honeypot: hidden from people, often filled in by spam bots. -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Website</label>
+        <input id="website" type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <app-turnstile
+        [siteKey]="captchaSiteKey"
+        [language]="captchaLanguage()"
+        (token)="captchaToken.set($event)"
+      />
+
+      <p class="form__privacy">{{ 'contact.privacy' | t }}</p>
+
+      <div aria-live="polite">
+        @switch (status()) {
+          @case ('success') { <p class="alert alert--success">{{ 'contact.success' | t }}</p> }
+          @case ('error') { <p class="alert alert--error">{{ 'contact.error' | t }}</p> }
+          @case ('captcha') { <p class="alert alert--error">{{ 'contact.captcha' | t }}</p> }
+          @case ('dailyLimit') { <p class="alert alert--error">{{ 'contact.dailyLimit' | t }}</p> }
+        }
+      </div>
+
+      <button type="submit" class="btn btn--primary" [disabled]="status() === 'sending'">
+        {{ (status() === 'sending' ? 'contact.sending' : 'contact.send') | t }}
+      </button>
+    </form>
+
+    <aside class="contact__aside">
+      <h2>{{ 'contact.otherTitle' | t }}</h2>
+      <ul class="contact__list">
+        <li><app-icon name="mail" /><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
+        @if (site.phone) {
+          <li><app-icon name="phone" /><a [href]="'tel:' + site.phone">{{ site.phone }}</a></li>
+        }
+        <li><app-icon name="pin" /><span>{{ site.location | localized }}</span></li>
+      </ul>
+
+      <h2>{{ 'contact.followTitle' | t }}</h2>
+      <app-social-links />
+    </aside>
+  </div>
+</section>

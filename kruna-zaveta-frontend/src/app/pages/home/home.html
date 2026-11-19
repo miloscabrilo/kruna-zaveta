@@ -1,0 +1,71 @@
+<section class="hero">
+  <div class="container hero__inner">
+    <h1 class="hero__title">{{ 'home.heroTitle' | t }}</h1>
+    <p class="hero__text">{{ 'home.heroText' | t }}</p>
+    <div class="hero__actions">
+      <a class="btn btn--gold" [routerLink]="['/', i18n.lang(), 'donate']">
+        <app-icon name="heart" />
+        {{ 'home.heroDonate' | t }}
+      </a>
+      <a class="btn btn--ghost" [routerLink]="['/', i18n.lang(), 'about']">{{ 'home.heroLearnMore' | t }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <header class="section__header">
+    <h2>{{ 'home.newsTitle' | t }}</h2>
+    <p class="lead">{{ 'home.newsIntro' | t }}</p>
+  </header>
+
+  <div class="card-grid">
+    @for (item of news; track item.slug) {
+      <article class="card news-card">
+        @if (item.image) {
+          <img class="card__image" [src]="item.image" alt="" loading="lazy" />
+        } @else {
+          <div class="topic-banner" [attr.data-topic]="item.topic">
+            <app-icon [name]="item.topic" />
+          </div>
+        }
+        <div class="card__body">
+          <time class="news-card__date" [attr.datetime]="item.date">{{ i18n.formatDate(item.date) }}</time>
+          <h3 class="news-card__title">
+            <a [routerLink]="['/', i18n.lang(), 'news', item.slug]">{{ item.title | localized }}</a>
+          </h3>
+          <p>{{ item.summary | localized }}</p>
+          <span class="news-card__more" aria-hidden="true">{{ 'home.readMore' | t }} →</span>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="section container donors">
+  <header class="section__header">
+    <h2>{{ 'donors.homeTitle' | t }}</h2>
+    <p class="lead">{{ 'donors.homeText' | t }}</p>
+  </header>
+  <ul class="donors__list">
+    @for (donor of donors; track donor.id) {
+      <li>
+        <app-icon name="heart" />
+        {{ donor.name | localized }}
+      </li>
+    }
+  </ul>
+  <a class="donors__more" [routerLink]="['/', i18n.lang(), 'donors']">{{ 'donors.homeCta' | t }} →</a>
+</section>
+
+<section class="container">
+  <div class="cta-band">
+    <div>
+      <h2>{{ 'home.impactTitle' | t }}</h2>
+      <p>{{ 'home.impactText' | t }}</p>
+    </div>
+    <a class="btn btn--gold" [routerLink]="['/', i18n.lang(), 'donate']">
+      <app-icon name="heart" />
+      {{ 'nav.donate' | t }}
+    </a>
+  </div>
+</section>

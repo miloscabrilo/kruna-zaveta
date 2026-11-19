@@ -1,0 +1,24 @@
+<article class="section container article">
+  <a class="article__back" [routerLink]="['/', i18n.lang()]">← {{ 'news.back' | t }}</a>
+
+  @if (item(); as item) {
+    @if (item.image) {
+      <img class="article__image" [src]="item.image" [alt]="item.title | localized" />
+    } @else {
+      <div class="topic-banner topic-banner--large" [attr.data-topic]="item.topic">
+        <app-icon [name]="item.topic" />
+      </div>
+    }
+    <h1>{{ item.title | localized }}</h1>
+    <p class="article__meta">
+      {{ 'news.published' | t }}:
+      <time [attr.datetime]="item.date">{{ i18n.formatDate(item.date) }}</time>
+    </p>
+    <p class="lead">{{ item.summary | localized }}</p>
+    <!-- HTML generated at build time from the article's Markdown (Angular sanitizes it again). -->
+    <div class="article__body" [innerHTML]="item.body | localized"></div>
+  } @else {
+    <h1>{{ 'notFound.title' | t }}</h1>
+    <p>{{ 'news.notFound' | t }}</p>
+  }
+</article>

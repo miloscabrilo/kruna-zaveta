@@ -1,0 +1,57 @@
+<section class="section container">
+  <header class="section__header">
+    <h1>{{ 'about.title' | t }}</h1>
+    <p class="lead">{{ 'about.intro' | t }}</p>
+  </header>
+
+  <div class="about__pillars">
+    <article class="card card__body">
+      <h2>{{ 'about.missionTitle' | t }}</h2>
+      <p>{{ 'about.missionText' | t }}</p>
+    </article>
+    <article class="card card__body">
+      <h2>{{ 'about.visionTitle' | t }}</h2>
+      <p>{{ 'about.visionText' | t }}</p>
+    </article>
+  </div>
+</section>
+
+<section class="container">
+  <h2>{{ 'about.valuesTitle' | t }}</h2>
+  <ul class="values">
+    @for (value of values; track value.key) {
+      <li class="value">
+        <span class="value__icon"><app-icon [name]="value.icon" /></span>
+        <h3>{{ 'about.values.' + value.key + 'Title' | t }}</h3>
+        <p>{{ 'about.values.' + value.key + 'Text' | t }}</p>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="section container" id="team">
+  <header class="section__header">
+    <h2>{{ 'about.teamTitle' | t }}</h2>
+    <p class="lead">{{ 'about.teamText' | t }}</p>
+  </header>
+  <ul class="team">
+    @for (member of team; track $index) {
+      <li class="card team__member">
+        <span class="avatar" aria-hidden="true">{{ initials(member.name | localized) }}</span>
+        <strong>{{ member.name | localized }}</strong>
+        <span class="team__role">{{ member.role | localized }}</span>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="container">
+  <div class="cta-box">
+    <app-icon name="hands" class="cta-box__icon" />
+    <div>
+      <h2>{{ 'about.volunteerTitle' | t }}</h2>
+      <p>{{ 'about.volunteerText' | t }}</p>
+      <a class="btn btn--primary" [routerLink]="['/', i18n.lang(), 'contact']">{{ 'about.volunteerCta' | t }}</a>
+    </div>
+  </div>
+</section>

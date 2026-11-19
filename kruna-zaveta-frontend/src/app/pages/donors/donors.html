@@ -1,0 +1,46 @@
+<section class="section container">
+  <header class="section__header">
+    <h1>{{ 'donors.title' | t }}</h1>
+    <p class="lead">{{ 'donors.intro' | t }}</p>
+  </header>
+
+  <h2 class="donors__heading">
+    <app-icon name="heart" />
+    {{ 'donors.specialTitle' | t }}
+  </h2>
+  <ul class="featured">
+    @for (donor of featured; track donor.id) {
+      <li class="card featured__card">
+        <span class="avatar avatar--gold" aria-hidden="true">{{ initials(donor.name | localized) }}</span>
+        <h3 class="featured__name">{{ donor.name | localized }}</h3>
+        <p class="featured__since">{{ 'donors.since' | t }} {{ donor.since }}</p>
+        @if (donor.tribute) {
+          <blockquote class="featured__tribute">{{ donor.tribute | localized }}</blockquote>
+        }
+      </li>
+    }
+  </ul>
+
+  @if (others.length) {
+    <h2>{{ 'donors.alsoTitle' | t }}</h2>
+    <ul class="others">
+      @for (donor of others; track donor.id) {
+        <li>{{ donor.name | localized }}</li>
+      }
+    </ul>
+    <p class="donors__anonymous">… {{ 'donors.alsoText' | t }}</p>
+  }
+
+  <p class="donors__consent">{{ 'donors.consent' | t }}</p>
+</section>
+
+<section class="container">
+  <div class="cta-box">
+    <app-icon name="hands" class="cta-box__icon" />
+    <div>
+      <h2>{{ 'donors.becomeTitle' | t }}</h2>
+      <p>{{ 'donors.becomeText' | t }}</p>
+      <a class="btn btn--primary" [routerLink]="['/', i18n.lang(), 'donate']">{{ 'nav.donate' | t }}</a>
+    </div>
+  </div>
+</section>

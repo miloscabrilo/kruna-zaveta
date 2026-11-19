@@ -1,0 +1,31 @@
+# SAMPLE CONTENT – replace with real news.
+sr:
+  title: Подељени пакети хране
+  slug: food-packages-delivered
+  date: 2026-06-15
+  topic: food
+  summary: Наши волонтери су обишли породице у више села и уручили им пакете са основним намирницама.
+  body: |
+    Пакети су садржали брашно, уље, шећер, тестенину и хигијенске производе.
+
+    Посебно се захваљујемо волонтерима који су помогли у достави до најудаљенијих домаћинстава.
+en:
+  title: Food packages delivered
+  slug: food-packages-delivered
+  date: 2026-06-15
+  topic: food
+  summary: Our volunteers visited families in several villages and delivered packages with basic groceries.
+  body: |
+    The packages contained flour, oil, sugar, pasta and hygiene products.
+
+    Special thanks to the volunteers who helped deliver them to the most remote households.
+de:
+  title: Lebensmittelpakete verteilt
+  slug: food-packages-delivered
+  date: 2026-06-15
+  topic: food
+  summary: Unsere Freiwilligen haben Familien in mehreren Dörfern besucht und Pakete mit Grundnahrungsmitteln übergeben.
+  body: |
+    Die Pakete enthielten Mehl, Öl, Zucker, Teigwaren und Hygieneartikel.
+
+    Ein besonderer Dank gilt den Freiwilligen, die bei der Lieferung bis zu den abgelegensten Haushalten geholfen haben.

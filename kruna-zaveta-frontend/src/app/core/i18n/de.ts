@@ -1,0 +1,161 @@
+import { Translations } from './en';
+
+export const de: Translations = {
+  meta: {
+    siteName: 'Kruna Zaveta',
+    tagline: 'Humanitäre Organisation',
+    description:
+      'Kruna Zaveta ist eine humanitäre Organisation, die bedürftigen Familien und Einzelpersonen im Kosovo und in Metochien hilft.',
+  },
+  nav: {
+    home: 'Aktuelles',
+    projects: 'Was wir getan haben',
+    recognitions: 'Auszeichnungen',
+    about: 'Über uns',
+    donors: 'Unsere Spender',
+    contact: 'Kontakt',
+    donate: 'Spenden',
+    menu: 'Menü',
+    close: 'Menü schließen',
+    language: 'Sprache',
+    skipToContent: 'Zum Inhalt springen',
+  },
+  home: {
+    heroTitle: 'Solidarität, Menschlichkeit und Zusammenhalt',
+    heroText:
+      'Wir helfen bedürftigen Familien und Einzelpersonen im Kosovo und in Metochien und tragen zu besseren Lebensbedingungen für jene bei, die Hilfe am dringendsten brauchen.',
+    heroDonate: 'Unterstützen Sie uns',
+    heroLearnMore: 'Mehr über uns',
+    newsTitle: 'Neuigkeiten',
+    newsIntro: 'Berichte aus der Region, Hilfslieferungen und Geschichten der Menschen, denen wir helfen.',
+    readMore: 'Weiterlesen',
+    impactTitle: 'Jeder Beitrag zählt',
+    impactText:
+      'Lebensmittelpakete, Brennholz, Schulmaterial, medizinische Hilfe – Ihre Unterstützung kommt direkt bei den Familien an.',
+  },
+  news: {
+    back: 'Zurück zu allen Neuigkeiten',
+    published: 'Veröffentlicht',
+    notFound: 'Dieser Beitrag wurde nicht gefunden.',
+  },
+  projects: {
+    title: 'Was wir getan haben',
+    intro:
+      'Ein Überblick über die Aktionen und Projekte, die wir gemeinsam mit unseren Spenderinnen, Spendern und Freiwilligen umgesetzt haben.',
+    statusDone: 'Abgeschlossen',
+    statusOngoing: 'Laufend',
+  },
+  about: {
+    title: 'Über uns',
+    intro:
+      'Kruna Zaveta ist eine humanitäre Organisation, die sich der Hilfe für bedürftige Familien und Einzelpersonen im Kosovo und in Metochien widmet. Mit Solidarität, Menschlichkeit und Zusammenhalt unterstützen wir jene, die es am meisten brauchen, und tragen zu besseren Lebensbedingungen bei.',
+    missionTitle: 'Unsere Mission',
+    missionText:
+      'Konkrete, direkte Hilfe für bedürftige Familien und Einzelpersonen – Lebensmittel, Heizmaterial, Kleidung, medizinische Versorgung und Bildung – und die Gewissheit, dass jede Spende dort ankommt, wo sie gebraucht wird.',
+    visionTitle: 'Unsere Vision',
+    visionText:
+      'Gemeinschaften im Kosovo und in Metochien, in denen keine Familie allein gelassen wird und jedes Kind die Chance auf ein würdiges Leben und eine gute Zukunft hat.',
+    valuesTitle: 'Unsere Werte',
+    values: {
+      solidarityTitle: 'Solidarität',
+      solidarityText: 'Wir stehen denen bei, die Hilfe brauchen – unabhängig von den Umständen.',
+      humanityTitle: 'Menschlichkeit',
+      humanityText: 'Wir begegnen jedem Menschen mit Respekt, Mitgefühl und Würde.',
+      unityTitle: 'Zusammenhalt',
+      unityText: 'Gemeinsam – Spendende, Freiwillige und Familien – erreichen wir mehr.',
+      transparencyTitle: 'Transparenz',
+      transparencyText: 'Wir berichten offen darüber, was wir sammeln und wie wir es einsetzen.',
+    },
+    teamTitle: 'Wer wir sind',
+    teamText:
+      'Kruna Zaveta wird von Freiwilligen getragen – Menschen aus dem Kosovo und Metochien sowie aus der Diaspora, die ihrer Gemeinschaft helfen möchten.',
+    volunteerTitle: 'Freiwillig mithelfen',
+    volunteerText:
+      'Wir suchen immer Menschen, die beim Sammeln, Verpacken und Verteilen von Hilfsgütern oder bei der Organisation von Veranstaltungen helfen. Melden Sie sich bei uns!',
+    volunteerCta: 'Kontaktieren Sie uns',
+  },
+  donate: {
+    title: 'Unterstützen Sie unsere Arbeit',
+    intro:
+      'Ihre Spende hilft uns, Familien im Kosovo und in Metochien mit Lebensmitteln, Heizmaterial, Medikamenten und Schulmaterial zu versorgen. Jeder Beitrag, ob groß oder klein, macht einen Unterschied.',
+    eurTitle: 'Überweisung in Euro (SEPA)',
+    eurText: 'Für Spenderinnen und Spender in Deutschland, Österreich und dem übrigen Euroraum.',
+    qrTitle: 'Mit der Banking-App scannen',
+    qrText:
+      'Die meisten Banking-Apps in Deutschland und Österreich können diesen Code (GiroCode) lesen und füllen die Überweisung automatisch aus.',
+    paypalTitle: 'PayPal',
+    paypalText: 'Spenden Sie online mit Ihrem PayPal-Konto oder Ihrer Karte.',
+    paypalButton: 'Mit PayPal spenden',
+    rsdTitle: 'Zahlung in Dinar (Serbien)',
+    rsdText: 'Für Spenderinnen und Spender in Serbien – per Einzahlungsschein oder E-Banking.',
+    recipient: 'Empfänger',
+    iban: 'IBAN',
+    bic: 'BIC / SWIFT',
+    accountNumber: 'Kontonummer',
+    bank: 'Bank',
+    reference: 'Verwendungszweck',
+    referenceValue: 'Spende',
+    copy: 'Kopieren',
+    copied: 'Kopiert',
+    otherWaysTitle: 'Weitere Möglichkeiten zu helfen',
+    inKindTitle: 'Sachspenden',
+    inKindText: 'Lebensmittel, Kleidung, Hygieneartikel und Schulmaterial sind immer willkommen.',
+    volunteerTitle: 'Freiwilligenarbeit',
+    volunteerText: 'Helfen Sie beim Sammeln, Verpacken und Verteilen oder bei der Organisation von Veranstaltungen.',
+    shareTitle: 'Weitersagen',
+    shareText: 'Folgen Sie uns in den sozialen Netzwerken und teilen Sie unsere Aktionen mit Ihren Freunden.',
+    contactCta: 'Kontaktieren Sie uns',
+    placeholderNotice: 'Die angezeigten Zahlungsdaten sind Platzhalter und müssen vor der Veröffentlichung ersetzt werden.',
+  },
+  recognitions: {
+    title: 'Auszeichnungen',
+    intro:
+      'Auszeichnungen, Plaketten und Dankesschreiben, die Kruna Zaveta für ihre humanitäre Arbeit erhalten hat. Sie gehören allen, die helfen – unseren Spenderinnen, Spendern und Freiwilligen.',
+  },
+  donors: {
+    title: 'Unsere Spender',
+    intro:
+      'Ohne die Menschen und Organisationen, die uns zur Seite stehen, wäre unsere Arbeit nicht möglich. Wir danken allen von Herzen – und ganz besonders den hier Genannten.',
+    specialTitle: 'Mit besonderem Dank',
+    since: 'Spender seit',
+    alsoTitle: 'Wir danken außerdem',
+    alsoText: 'sowie den vielen Spenderinnen und Spendern, die anonym bleiben möchten.',
+    consent: 'Spender werden nur mit ihrer Zustimmung genannt. Möchten Sie aufgeführt oder entfernt werden? Kontaktieren Sie uns.',
+    becomeTitle: 'Spender werden',
+    becomeText: 'Schließen Sie sich den Menschen an, die unsere Arbeit möglich machen.',
+    homeTitle: 'Danke an unsere Spender',
+    homeText: 'Unsere Arbeit wird durch die Großzügigkeit von Menschen und Organisationen möglich, die an sie glauben.',
+    homeCta: 'Alle unsere Spender',
+  },
+  contact: {
+    title: 'Kontakt',
+    intro: 'Haben Sie eine Frage, möchten Sie helfen oder kennen Sie eine Familie in Not? Schreiben Sie uns.',
+    name: 'Name',
+    email: 'E-Mail',
+    subject: 'Betreff',
+    message: 'Nachricht',
+    send: 'Nachricht senden',
+    sending: 'Wird gesendet…',
+    success: 'Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns so bald wie möglich.',
+    error: 'Die Nachricht konnte leider nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie uns eine E-Mail.',
+    required: 'Dieses Feld ist erforderlich.',
+    invalidEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+    tooLong: 'Der Text ist zu lang.',
+    captcha: 'Bitte bestätigen Sie, dass Sie kein Roboter sind (Prüfung über der Schaltfläche), und senden Sie erneut.',
+    dailyLimit: 'Sie haben das Limit von 3 Nachrichten pro Tag erreicht. Bitte versuchen Sie es morgen erneut oder schreiben Sie uns eine E-Mail.',
+    privacy:
+      'Wir verwenden Ihre Daten nur, um Ihre Nachricht zu beantworten, und geben sie nicht an Dritte weiter. Das Formular wird durch Cloudflare Turnstile vor Spam geschützt.',
+    otherTitle: 'Weitere Kontaktmöglichkeiten',
+    followTitle: 'Folgen Sie uns',
+  },
+  footer: {
+    rights: 'Alle Rechte vorbehalten.',
+    followUs: 'Folgen Sie uns',
+    quickLinks: 'Links',
+  },
+  notFound: {
+    title: 'Seite nicht gefunden',
+    text: 'Die gesuchte Seite existiert nicht.',
+    back: 'Zur Startseite',
+  },
+};

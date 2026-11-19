@@ -1,0 +1,25 @@
+.article {
+  max-width: 46rem;
+}
+
+.article__back {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.article__meta {
+  margin-top: -0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+.article__image {
+  display: block;
+  width: 100%;
+  max-height: 26rem;
+  margin-bottom: 1.5rem;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
+}

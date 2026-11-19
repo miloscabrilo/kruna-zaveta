@@ -1,0 +1,87 @@
+# Decap CMS configuration – https://decapcms.org/docs/configuration-options/
+# Editors log in with their GitHub account and need write access to the repository.
+# Every "Publish" commits to the main branch; the site must then be rebuilt and deployed to show it.
+
+backend:
+  name: github
+  repo: miloscabrilo/kruna-zaveta
+  branch: main
+  # GitHub login goes through kruna-zaveta-backend (/api/auth → /api/callback).
+  base_url: https://krunazaveta.com
+  auth_endpoint: api/auth
+
+# Local editing without GitHub: run `npm run cms` (decap-server) and open http://localhost:4200/admin/index.html
+# Only used when the CMS runs on localhost.
+local_backend: true
+
+# Uploaded photos are stored in the repository and served from /images/news/…
+media_folder: kruna-zaveta-frontend/public/images/news
+public_folder: /images/news
+
+i18n:
+  structure: single_file
+  locales: [sr, en, de]
+  default_locale: sr
+
+collections:
+  - name: news
+    label: Вести / News / Aktuelles
+    label_singular: Article
+    description: >
+      Fill in Serbian (СР) first – it is required. English and German can follow later;
+      until then the Serbian text is shown on those pages.
+    folder: kruna-zaveta-frontend/content/news
+    create: true
+    delete: true
+    format: yml
+    extension: yml
+    # File name only – the article URL comes from the "URL slug" field.
+    slug: '{{year}}-{{month}}-{{day}}-{{hour}}{{minute}}'
+    summary: '{{date}} – {{title}}'
+    sortable_fields: [date, title]
+    i18n: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        i18n: true
+      - label: URL slug
+        name: slug
+        widget: string
+        i18n: duplicate
+        hint: 'Part of the address, latin letters only, e.g. winter-firewood-action → krunazaveta.com/sr/news/winter-firewood-action. Do not change it after publishing.'
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'Lowercase latin letters, digits and dashes only']
+      - label: Date
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: DD.MM.YYYY
+        time_format: false
+        i18n: duplicate
+      - label: Topic
+        name: topic
+        widget: select
+        default: community
+        i18n: duplicate
+        hint: Used for the coloured banner when there is no photo.
+        options:
+          - { label: Food, value: food }
+          - { label: Heating, value: heating }
+          - { label: Education, value: education }
+          - { label: Health, value: health }
+          - { label: Community, value: community }
+      - label: Photo
+        name: image
+        widget: image
+        required: false
+        i18n: duplicate
+        hint: Optional. Landscape photos look best – please resize large phone photos (under ~1 MB) before uploading.
+      - label: Summary
+        name: summary
+        widget: text
+        i18n: true
+        hint: One or two sentences, shown on the news list.
+      - label: Text
+        name: body
+        widget: markdown
+        i18n: true

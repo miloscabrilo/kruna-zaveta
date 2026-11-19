@@ -1,0 +1,235 @@
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--radius);
+
+  &:focus {
+    top: 1rem;
+  }
+}
+
+/* Sticky on the host: sticking only works relative to the parent, and <app-header> is exactly as tall as the header. */
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: block;
+}
+
+.header {
+  position: relative;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow 0.2s;
+}
+
+.header--scrolled {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.08);
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 4rem;
+  /* Wider than page content (.container = 1120px): six menu items + languages + Donate need ~1250px in German. */
+  max-width: calc(1320px + 2 * var(--page-gutter));
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0; // lets the name shrink instead of pushing Donate off narrow screens
+  margin-right: auto;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand app-logo {
+  flex-shrink: 0;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+/* When space runs out, the name wraps between its words ("Kruna" / "Zaveta") – never cut off. */
+.brand__name {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-primary);
+}
+
+.brand__tagline {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--color-muted);
+}
+
+/* Phones: logo + name + Donate + menu on one row; the tagline would make the header too tall. */
+@media (max-width: 479px) {
+  .brand {
+    gap: 0.45rem;
+  }
+
+  .brand__name {
+    font-size: 1.05rem;
+  }
+
+  .brand__tagline {
+    display: none;
+  }
+}
+
+.header-donate {
+  flex-shrink: 0;
+  gap: 0.35rem;
+  min-height: 2.5rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.9rem;
+}
+
+/* Very narrow phones: slimmer Donate button without the icon. */
+@media (max-width: 349px) {
+  .header-donate {
+    padding-inline: 0.75rem;
+
+    app-icon {
+      display: none;
+    }
+  }
+}
+
+.menu-toggle {
+  display: inline-flex;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--color-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile: the nav is a drop-down panel under the bar. */
+.nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem var(--page-gutter) 1.5rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 12px 24px rgb(0 0 0 / 0.08);
+  max-height: calc(100dvh - 4rem);
+  overflow-y: auto;
+
+  &--open {
+    display: flex;
+  }
+}
+
+.nav__list,
+.lang-switch {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__list {
+  flex-direction: column;
+}
+
+.nav__link {
+  display: block;
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius);
+  color: var(--color-text);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--color-primary-soft);
+  }
+
+  &--active {
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+}
+
+.lang-switch {
+  gap: 0.25rem;
+}
+
+.lang-switch__link {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &--active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: #fff;
+  }
+}
+
+@media (min-width: 1360px) { // German needs ~1335px for the full desktop header (6 menu items)
+  .menu-toggle {
+    display: none;
+  }
+
+  /* Desktop: logo | menu + languages | Donate */
+  .nav {
+    order: 1;
+  }
+
+  .header-donate {
+    order: 2;
+    min-height: 2.75rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .nav {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+
+  .nav__link {
+    padding: 0.5rem 0.55rem;
+    white-space: nowrap;
+  }
+}

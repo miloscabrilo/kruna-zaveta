@@ -1,0 +1,43 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <section>
+      <div class="footer__brand">
+        <app-logo />
+        <strong>{{ 'meta.siteName' | t }}</strong>
+      </div>
+      <p class="footer__text">{{ 'meta.description' | t }}</p>
+    </section>
+
+    <section>
+      <h2 class="footer__title">{{ 'footer.quickLinks' | t }}</h2>
+      <ul class="footer__links">
+        @for (item of navItems; track item.path) {
+          <li>
+            <a [routerLink]="item.path ? ['/', i18n.lang(), item.path] : ['/', i18n.lang()]">{{ item.key | t }}</a>
+          </li>
+        }
+        <li><a [routerLink]="['/', i18n.lang(), 'donate']">{{ 'nav.donate' | t }}</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="footer__title">{{ 'nav.contact' | t }}</h2>
+      <ul class="footer__links footer__contact">
+        <li><app-icon name="mail" /><a [href]="'mailto:' + site.email">{{ site.email }}</a></li>
+        @if (site.phone) {
+          <li><app-icon name="phone" /><a [href]="'tel:' + site.phone">{{ site.phone }}</a></li>
+        }
+        <li><app-icon name="pin" /><span>{{ site.location | localized }}</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="footer__title">{{ 'footer.followUs' | t }}</h2>
+      <app-social-links />
+    </section>
+  </div>
+
+  <div class="container footer__bottom">
+    © {{ year }} {{ 'meta.siteName' | t }}. {{ 'footer.rights' | t }}
+  </div>
+</footer>
